@@ -3,12 +3,12 @@ import { styled, type HTMLStyledProps } from 'styled-system/jsx'
 
 type TagVariants = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
 
-type TypographyProps = PropsWithChildren<{
+type TextProps = PropsWithChildren<{
   as?: TagVariants
 }> &
   HTMLStyledProps<TagVariants>
 
-export const Typography = (props: TypographyProps) => {
+export const Text = (props: TextProps) => {
   const { as = 'p', ...rest } = props
 
   const Component = styled(as)
@@ -26,8 +26,8 @@ export const Heading = (props: HeadingProps) => {
   const { as = 'h2', children, ...rest } = props
 
   return (
-    <Typography as={as} fontWeight="bold" {...rest}>
+    <Text as={as} fontWeight="bold" {...rest}>
       {children}
-    </Typography>
+    </Text>
   )
 }

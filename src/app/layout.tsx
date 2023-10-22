@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { Fira_Code, Plus_Jakarta_Sans } from 'next/font/google'
+import { Fira_Code, Courier_Prime } from 'next/font/google'
 import { PropsWithChildren } from 'react'
 import { cx, sva } from 'styled-system/css'
 import './global.css'
 
-const body = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-body' })
+const body = Courier_Prime({ weight: '400', subsets: ['latin'] })
 const code = Fira_Code({ subsets: ['latin'], variable: '--font-code' })
 
 export const metadata: Metadata = {
@@ -47,9 +47,9 @@ const RootLayout = (props: PropsWithChildren) => {
   const { children } = props
   return (
     <html lang="en">
-      <body className={cx(body.variable, code.variable)}>
+      <body className={cx(body.className, code.variable)}>
         <header className={styles.header}>
-          Ćelija Logo
+          
         </header>
         {children}
         </body>
