@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import { Container, Flex } from "styled-system/jsx";
 import { Text } from "~/components/ui/typography";
 
