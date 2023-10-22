@@ -41,7 +41,7 @@ export const ContributionForm = (props: DialogProps) => {
                 <DialogTitle>Poruka</DialogTitle>
                 <DialogDescription>
                     Unesite jednu riječ koju bi ste željeli da se nađe u ćeliji.<br/>
-                    Primjer poruke: "Sloboda"
+                    Primjer poruke: &quot;Sloboda&quot;
                 </DialogDescription>
                 <Textarea placeholder="Unesite poruku" />
 
