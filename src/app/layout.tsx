@@ -49,7 +49,7 @@ const RootLayout = (props: PropsWithChildren) => {
     <html lang="en">
       <body className={cx(body.variable, code.variable)}>
         <header className={styles.header}>
-          Navbar
+          Ćelija Logo
         </header>
         {children}
         </body>

@@ -21,7 +21,7 @@ import { TabContent, TabIndicator, TabList, TabTrigger, Tabs } from '~/component
 export default function Home() {
   return (
     <Container py={{ base: '12', md: '16' }} maxW="7xl">
-      <Tabs defaultValue="button">
+      {/* <Tabs defaultValue="button">
         <TabList>
           <TabTrigger value="button">Button</TabTrigger>
           <TabTrigger value="radio">Radio Group</TabTrigger>
@@ -58,7 +58,7 @@ export default function Home() {
             </SliderMarkerGroup>
           </Slider>
         </TabContent>
-      </Tabs>
+      </Tabs> */}
     </Container>
   )
 }
