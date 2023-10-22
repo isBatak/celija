@@ -1,16 +1,16 @@
 "use client";
 
 import { Container, Flex } from "styled-system/jsx";
+import { Logo } from "~/components/elements/logo";
 import { Text } from "~/components/ui/typography";
 
 export default function Home() {
   return (
     <Container py={{ base: "12", md: "16" }} maxW="3xl">
-      <Flex align="center" justify="center" mb="6">
-        <img src="/celija.svg" width="300" />
-      </Flex>
 
-      <Text>
+      <Logo />
+
+      <Text mt="10">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna
         justo, mattis vitae posuere quis, hendrerit ut turpis. Praesent eget
         facilisis eros. Maecenas eu ante hendrerit, feugiat est in, tempus
