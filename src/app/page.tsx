@@ -10,7 +10,7 @@ export default function Home() {
 
       <Logo />
 
-      <Text mt="10">
+      <Text mt="10" textAlign="justify">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna
         justo, mattis vitae posuere quis, hendrerit ut turpis. Praesent eget
         facilisis eros. Maecenas eu ante hendrerit, feugiat est in, tempus
