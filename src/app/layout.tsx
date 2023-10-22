@@ -48,9 +48,9 @@ const RootLayout = (props: PropsWithChildren) => {
   return (
     <html lang="en">
       <body className={cx(body.className, code.variable)}>
-        <header className={styles.header}>
+        {/* <header className={styles.header}>
           
-        </header>
+        </header> */}
         {children}
         </body>
     </html>
