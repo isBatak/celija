@@ -3,16 +3,4 @@
 		"source.fixAll.eslint": true
 	},
 	"typescript.tsdk": "node_modules/typescript/lib",
-	"sqltools.connections": [
-		{
-			"pgOptions": {
-				"ssl": true
-			},
-			"previewLimit": 50,
-			"server": "localhost",
-			"driver": "PostgreSQL",
-			"name": "Vercel",
-			"connectString": "postgres://default:pVoLn4ZNUe0s@ep-green-rice-81761134-pooler.eu-central-1.postgres.vercel-storage.com:5432/verceldb"
-		}
-	],
 }
