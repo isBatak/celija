@@ -1,33 +1,33 @@
-import type { PropsWithChildren } from 'react'
-import { styled, type HTMLStyledProps } from 'styled-system/jsx'
+import type { PropsWithChildren } from 'react';
+import { styled, type HTMLStyledProps } from 'styled-system/jsx';
 
-type TagVariants = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
+type TagVariants = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
 
 type TextProps = PropsWithChildren<{
-  as?: TagVariants
+	as?: TagVariants;
 }> &
-  HTMLStyledProps<TagVariants>
+	HTMLStyledProps<TagVariants>;
 
 export const Text = (props: TextProps) => {
-  const { as = 'p', ...rest } = props
+	const { as = 'p', ...rest } = props;
 
-  const Component = styled(as)
-  return <Component {...rest} />
-}
+	const Component = styled(as);
+	return <Component {...rest} />;
+};
 
-type HeadingTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+type HeadingTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 type HeadingProps = PropsWithChildren<{
-  as?: HeadingTags
+	as?: HeadingTags;
 }> &
-  HTMLStyledProps<TagVariants>
+	HTMLStyledProps<TagVariants>;
 
 export const Heading = (props: HeadingProps) => {
-  const { as = 'h2', children, ...rest } = props
+	const { as = 'h2', children, ...rest } = props;
 
-  return (
-    <Text as={as} fontWeight="bold" {...rest}>
-      {children}
-    </Text>
-  )
-}
+	return (
+		<Text as={as} fontWeight="bold" {...rest}>
+			{children}
+		</Text>
+	);
+};

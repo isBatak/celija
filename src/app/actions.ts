@@ -6,12 +6,27 @@ import { z } from 'zod';
 
 const isSingleWord = (value: string) => /^[A-Za-z]+$/.test(value);
 
-export async function sendMessage(prevState: any, formData: FormData) {
+const MyEnum = z.enum(['Manja', 'Srednja', 'Visoka']);
+const MyCustomEnum = MyEnum.nullable().refine(
+	(value) => {
+		return MyEnum.safeParse(value).success;
+	},
+	{
+		message: 'Odaberite važnost',
+	}
+);
+
+export async function sendMessage(currentState: any, formData: FormData) {
 	const schema = z.object({
-		message: z.string().refine(isSingleWord, {
-			message: 'Unesite samo jednu riječ',
-		}),
-		importance: z.enum(['Manja', 'Srednja', 'Visoka']),
+		message: z
+			.string()
+			.refine((value: string) => value.length > 0, {
+				message: 'Unesite poruku',
+			})
+			.refine(isSingleWord, {
+				message: 'Unesite samo jednu riječ',
+			}),
+		importance: MyCustomEnum,
 	});
 
 	let data;
@@ -48,7 +63,7 @@ export async function sendMessage(prevState: any, formData: FormData) {
 			return {
 				errors: [
 					{
-						message: 'Error while sending message',
+						message: 'Dogodila se greška u sustavu!',
 						detail: error.message,
 					},
 				],

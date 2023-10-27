@@ -22,14 +22,10 @@ import {
 } from '~/components/ui/radio-button-group';
 import { Label } from '../ui/label';
 import { sendMessage } from '~/app/actions';
-import { PropsWithChildren, useRef } from 'react';
-import {
-	// @ts-ignore
-	experimental_useFormState as useFormState,
-	// @ts-ignore
-	experimental_useFormStatus as useFormStatus,
-} from 'react-dom';
+import { PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react';
+import { useFormState, useFormStatus } from 'react-dom';
 import { Input } from '../ui/input';
+import { Text } from '../ui/typography';
 
 const initialState = {
 	message: null,
@@ -48,75 +44,103 @@ const SubmitButton = () => {
 	);
 };
 
+const ErrorMessage = ({ state, name }: { state: any; name: string }) => {
+	const { errors } = state;
+
+	const fieldErrors = useMemo(() => {
+		if (!errors) return null;
+
+		return errors.filter((error: any) => {
+			if (name === 'formError') {
+				return !error.path;
+			}
+
+			return error.path?.includes(name);
+		});
+	}, [errors, name]);
+
+	if (!fieldErrors || fieldErrors.length === 0) return null;
+
+	return fieldErrors.map((error: any) => (
+		<Text key={error.message} color="red.400">
+			{error.message}
+		</Text>
+	));
+};
+
 export const ContributionForm = ({ children }: PropsWithChildren) => {
 	const [state, formAction] = useFormState(sendMessage, initialState);
 	const ref = useRef<HTMLFormElement>(null);
+	const [isOpen, setIsOpen] = useState(false);
 
-	console.log(state);
+	useEffect(() => {
+		if (!state.errors) {
+			ref.current?.reset();
+			setIsOpen(false);
+		}
+	}, [state]);
 
 	return (
-		<Dialog>
-			{({ close }) => (
-				<>
-					<DialogTrigger asChild>{children}</DialogTrigger>
-					<Portal>
-						<DialogBackdrop />
-						<DialogContainer>
-							<DialogContent>
-								<form
-									ref={ref}
-									action={async (formData) => {
-										const data = await formAction(formData);
+		<Dialog
+			open={isOpen}
+			onClose={() => {
+				setIsOpen(false);
+				delete state.errors;
+			}}
+		>
+			<DialogTrigger asChild onClick={() => setIsOpen(true)}>
+				{children}
+			</DialogTrigger>
+			<Portal>
+				<DialogBackdrop />
+				<DialogContainer>
+					<DialogContent>
+						<form ref={ref} action={formAction}>
+							<Stack gap="8" p="6">
+								<Stack gap="1">
+									<DialogTitle>Poruka</DialogTitle>
 
-										console.log(data?.errors);
+									<DialogDescription>
+										Unesite jednu riječ koju bi ste željeli da se nađe u ćeliji.
+										<br />
+										Primjer poruke: &quot;Sloboda&quot;
+									</DialogDescription>
+									<Input name="message" placeholder="Unesite poruku" />
+									<ErrorMessage state={state} name="message" />
 
-										if (!(data?.errors?.lengts > 0)) {
-											ref.current?.reset();
-											close();
-										}
-									}}
-								>
-									<Stack gap="8" p="6">
-										<Stack gap="1">
-											<DialogTitle>Poruka</DialogTitle>
+									<Label>Važnost:</Label>
+									<RadioButtonGroup w="full" name="importance">
+										{importanceOptions.map((importanceOption, id) => (
+											<Radio key={id} value={importanceOption} px="0" flex="1 0 auto">
+												<RadioControl />
+												<RadioLabel>{importanceOption}</RadioLabel>
+											</Radio>
+										))}
+									</RadioButtonGroup>
+									<ErrorMessage state={state} name="importance" />
+								</Stack>
 
-											<DialogDescription>
-												Unesite jednu riječ koju bi ste željeli da se nađe u ćeliji.
-												<br />
-												Primjer poruke: &quot;Sloboda&quot;
-											</DialogDescription>
-											<Input name="message" placeholder="Unesite poruku" />
+								<ErrorMessage state={state} name="formError" />
 
-											<Label>Važnost:</Label>
-											<RadioButtonGroup w="full" name="importance">
-												{importanceOptions.map((importanceOption, id) => (
-													<Radio key={id} value={importanceOption} px="0" flex="1 0 auto">
-														<RadioControl />
-														<RadioLabel>{importanceOption}</RadioLabel>
-													</Radio>
-												))}
-											</RadioButtonGroup>
-										</Stack>
-										<Stack gap="3" direction="row" width="full">
-											<DialogCloseTrigger asChild>
-												<Button variant="outline" width="full">
-													Odustani
-												</Button>
-											</DialogCloseTrigger>
-											<SubmitButton />
-										</Stack>
-									</Stack>
-									<DialogCloseTrigger asChild position="absolute" top="2" right="2">
-										<IconButton aria-label="Close Dialog" variant="ghost" size="sm">
-											<XIcon />
-										</IconButton>
+								<Stack gap="3" direction="row" width="full">
+									<DialogCloseTrigger asChild>
+										<Button variant="outline" width="full">
+											Odustani
+										</Button>
 									</DialogCloseTrigger>
-								</form>
-							</DialogContent>
-						</DialogContainer>
-					</Portal>
-				</>
-			)}
+									<SubmitButton />
+								</Stack>
+							</Stack>
+
+							<DialogCloseTrigger asChild position="absolute" top="2" right="2">
+								<IconButton aria-label="Close Dialog" variant="ghost" size="sm">
+									<XIcon />
+								</IconButton>
+							</DialogCloseTrigger>
+						</form>
+					</DialogContent>
+				</DialogContainer>
+			</Portal>
 		</Dialog>
 	);
 };
