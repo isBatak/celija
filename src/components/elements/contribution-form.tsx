@@ -86,6 +86,7 @@ export const ContributionForm = ({ children }: PropsWithChildren) => {
 			onClose={() => {
 				setIsOpen(false);
 				delete state.errors;
+				ref.current?.reset();
 			}}
 		>
 			<DialogTrigger asChild onClick={() => setIsOpen(true)}>
