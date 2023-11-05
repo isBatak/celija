@@ -12,13 +12,18 @@ export default function Home() {
 			<Logo />
 
 			<Text mt="10" textAlign="justify">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna justo, mattis vitae
-				posuere quis, hendrerit ut turpis. Praesent eget facilisis eros. Maecenas eu ante hendrerit,
-				feugiat est in, tempus tellus. Ut molestie quam eget risus mollis, sit amet ultricies metus
-				accumsan. Nam a blandit nisl, ac volutpat nisi. Nullam viverra volutpat mattis. Vivamus at
-				bibendum elit. Suspendisse potenti. Maecenas vitae sapien interdum, porta turpis at,
-				vehicula lorem. In sed accumsan mi. In posuere facilisis quam ut pulvinar. Donec ullamcorper
-				tempus metus ac malesuada.
+				U svijetu gdje su granice između umjetnosti i administracije zamagljene, gdje birokracija
+				često zasjenjuje kreativnost, "ĆELIJA" propitkuje bit kulture, ulogu umjetnosti u našim
+				životima i dihotomije koje definiraju opće razumijevanje umjetničkog izražavanja. Je li
+				"ĆELIJA" kritika administrativnih zavrzlama koje određuju sudbinu kulture ili je oda
+				otpornosti mladih umjetnika koji se usuđuju prkositi statusu quo? Umjetnost se ne pridržava
+				uvijek naših predrasuda. Ima moć šokiranja, često nas ostavi zbunjenima, a u nekim
+				slučajevima, propitujući sama svoju bit. "ĆELIJA" nas podsjećajuća da je umjetnost ipak
+				subjektivno područje, otvoreno za tumačenje svima. S tim na umu, umjetnicima uvijek treba
+				pomoć, a kulturu gradimo skupa. Razmisli što je tebi bitno za kulturu i umjetnost;
+				metaforički ili konkretno, ostavljamo ti da sam procijeniš, i niže ispuni svoju ĆELIJU
+				jednom riječi. Npr. Sloboda, financiranje, kreativnost, protokol… Svoj doprinos pronađi u
+				Galeriji Matice hrvatske na otvorenju ĆELIJE 14.11. u 19h.
 			</Text>
 
 			<Heading mt="10" fontSize="xl">
@@ -39,7 +44,7 @@ export default function Home() {
 			</Text>
 
 			<ContributionForm>
-				<Button>Otvori formu</Button>
+				<Button>Otvori Obrazac</Button>
 			</ContributionForm>
 		</Container>
 	);

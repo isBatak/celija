@@ -24,7 +24,7 @@ export default async function Messages() {
 							Trenutno nema poruka. Budite prvi koji će poslati poruku.
 						</Text>
 						<ContributionForm>
-							<Button>Posalji poruku</Button>
+							<Button>Pošalji poruku</Button>
 						</ContributionForm>
 					</Flex>
 				)}
