@@ -18,16 +18,7 @@ export default async function Messages() {
 		<Container py={{ base: '12', md: '16' }} maxW="md">
 			<Heading fontSize="2xl">Poruke:</Heading>
 			<VStack gap="2" alignItems="stretch">
-				{messages.length === 0 && (
-					<Flex justifyContent="center" alignItems="center" flexDirection="column" gap="2" h="full">
-						<Text textAlign="center">
-							Trenutno nema poruka. Budite prvi koji će poslati poruku.
-						</Text>
-						<ContributionForm>
-							<Button>Pošalji poruku</Button>
-						</ContributionForm>
-					</Flex>
-				)}
+				{messages.length === 0 && <Text textAlign="center">Trenutno nema poruka.</Text>}
 				{messages.map((message) => (
 					<VStack
 						key={message.id}
