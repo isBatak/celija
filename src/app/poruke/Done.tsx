@@ -20,8 +20,6 @@ export function Done({ message }: DoneProps) {
 			action={async (formData: FormData) => {
 				const id = formData.get('id');
 				const done = JSON.parse(formData.get('done')?.toString() ?? 'false');
-
-				console.log({ id, done });
 				addOptimisticMessage({ id, done });
 				await updateMessageDone({ id, done });
 			}}
