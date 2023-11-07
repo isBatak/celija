@@ -57,7 +57,7 @@ const RootLayout = (props: PropsWithChildren) => {
 		<html lang="en">
 			<head>
 				<link rel="icon" href="/icon?<generated>" type="image/png" sizes="32x32" />
-				<meta property="og:image" content="/opengraph-image?<generated>" />
+				<meta property="og:image" content="/og.jpg" />
 				<meta property="og:image:alt" content="ćelija" />
 				<meta property="og:image:type" content="image/png" />
 				<meta property="og:image:width" content="1200" />
