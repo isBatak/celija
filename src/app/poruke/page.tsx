@@ -4,6 +4,7 @@ import { Heading, Text } from '~/components/ui/typography';
 import { Badge } from '~/components/ui/badge';
 import { Label } from '~/components/ui/label';
 import { Done } from './Done';
+import { Refresher } from './Refresher';
 
 export const runtime = 'edge';
 export const preferredRegion = 'home';
@@ -14,6 +15,7 @@ export default async function Messages() {
 
 	return (
 		<Container py={{ base: '12', md: '16' }} maxW="md">
+			<Refresher />
 			<Heading fontSize="2xl">Poruke:</Heading>
 			<VStack gap="2" alignItems="stretch">
 				{messages.length === 0 && <Text textAlign="center">Trenutno nema poruka.</Text>}
