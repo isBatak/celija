@@ -3,10 +3,11 @@
 import { revalidatePath } from 'next/cache';
 import { sql } from '@vercel/postgres';
 import { z } from 'zod';
+import { importanceOptions } from './constants';
 
 const isSingleWord = (value: string) => /^[A-Za-z0-9]+$/.test(value);
 
-const MyEnum = z.enum(['Manja', 'Srednja', 'Visoka']);
+const MyEnum = z.enum(importanceOptions);
 const MyCustomEnum = MyEnum.nullable().refine(
 	(value) => {
 		return MyEnum.safeParse(value).success;

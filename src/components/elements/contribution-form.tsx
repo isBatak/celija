@@ -26,13 +26,12 @@ import { PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { Input } from '../ui/input';
 import { Text } from '../ui/typography';
+import { importanceOptions } from '~/app/constants';
 
 const initialState = {
 	message: null,
 	importance: null,
 };
-
-export const importanceOptions = ['Manja', 'Srednja', 'Visoka'] as const;
 
 const SubmitButton = () => {
 	const { pending } = useFormStatus();
