@@ -19,7 +19,9 @@ export function Done({ message }: DoneProps) {
 			ref={ref}
 			action={async (formData: FormData) => {
 				const id = formData.get('id');
-				const done = formData.get('done');
+				const done = JSON.parse(formData.get('done')?.toString() ?? 'false');
+
+				console.log({ id, done });
 				addOptimisticMessage({ id, done });
 				await updateMessageDone({ id, done });
 			}}
@@ -30,6 +32,9 @@ export function Done({ message }: DoneProps) {
 				checked={optimisticMessage.done}
 				name="done"
 				value={optimisticMessage.done ? 'false' : 'true'}
+				onChange={() => {
+					ref.current?.requestSubmit();
+				}}
 			/>
 		</form>
 	);

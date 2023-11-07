@@ -9,7 +9,7 @@ export const runtime = 'edge';
 export const preferredRegion = 'home';
 
 export default async function Messages() {
-	let data = await sql`SELECT * FROM messages`;
+	let data = await sql`SELECT * FROM messages ORDER BY id DESC`;
 	const { rows: messages } = data;
 
 	return (
