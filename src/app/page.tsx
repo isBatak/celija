@@ -5,6 +5,7 @@ import { Logo } from '~/components/elements/logo';
 import { Text } from '~/components/ui/typography';
 import { Button } from '~/components/ui/button';
 import { ContributionForm } from '~/components/elements/contribution-form';
+import { ark } from '@ark-ui/react';
 
 export default function Home() {
 	return (
@@ -44,7 +45,15 @@ export default function Home() {
 			<Text mt="10" mb="2" textAlign="justify">
 				Performans uživo pratite na ovom linku:
 			</Text>
-			<Button>Link na live performans</Button>
+
+			<Button asChild>
+				<a
+					href="https://docs.google.com/spreadsheets/d/1XZX6yXK6iQ7KhCr2MDyuxuOR5yiWRXB3NK89jmDkkDM/edit#gid=0"
+					target="_blank"
+				>
+					Link na live performans
+				</a>
+			</Button>
 		</Container>
 	);
 }
