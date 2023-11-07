@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { sql } from '@vercel/postgres';
 import { z } from 'zod';
 
-const isSingleWord = (value: string) => /^[A-Za-z]+$/.test(value);
+const isSingleWord = (value: string) => /^[A-Za-z0-9]+$/.test(value);
 
 const MyEnum = z.enum(['Manja', 'Srednja', 'Visoka']);
 const MyCustomEnum = MyEnum.nullable().refine(
