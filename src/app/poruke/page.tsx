@@ -1,11 +1,9 @@
 import { sql } from '@vercel/postgres';
-import { Container, Flex, VStack } from 'styled-system/jsx';
-import { Logo } from '~/components/elements/logo';
+import { Circle, Container, Flex, HStack, VStack } from 'styled-system/jsx';
 import { Heading, Text } from '~/components/ui/typography';
-import { Button } from '~/components/ui/button';
-import { ContributionForm } from '~/components/elements/contribution-form';
 import { Badge } from '~/components/ui/badge';
 import { Label } from '~/components/ui/label';
+import { Done } from './Done';
 
 export const runtime = 'edge';
 export const preferredRegion = 'home';
@@ -19,8 +17,8 @@ export default async function Messages() {
 			<Heading fontSize="2xl">Poruke:</Heading>
 			<VStack gap="2" alignItems="stretch">
 				{messages.length === 0 && <Text textAlign="center">Trenutno nema poruka.</Text>}
-				{messages.map((message) => (
-					<VStack
+				{messages.map((message, index) => (
+					<HStack
 						key={message.id}
 						gap="2"
 						alignItems="flex-start"
@@ -29,12 +27,22 @@ export default async function Messages() {
 						border="1px solid token(colors.gray.200)"
 						p="2"
 					>
-						<Text textAlign="justify">{message.message}</Text>
-						<Flex align="baseline">
-							<Label>Važnost:</Label>
-							<Badge>{message.importance}</Badge>
+						<Circle bg="gray.200" w="8" h="8" alignSelf="center">
+							<Text>{index + 1}</Text>
+						</Circle>
+
+						<VStack gap="2" alignItems="flex-start" flex="1 0 auto">
+							<Text>{message.message}</Text>
+							<Flex align="baseline">
+								<Label>Važnost:</Label>
+								<Badge>{message.importance}</Badge>
+							</Flex>
+						</VStack>
+
+						<Flex alignSelf="center">
+							<Done message={message} />
 						</Flex>
-					</VStack>
+					</HStack>
 				))}
 			</VStack>
 		</Container>

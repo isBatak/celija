@@ -56,7 +56,49 @@ export async function sendMessage(currentState: any, formData: FormData) {
 		revalidatePath('/poruke');
 
 		return {
-			message: 'Message sent successfully',
+			message: 'Poruka je uspješno poslana',
+		};
+	} catch (error) {
+		if (error instanceof Error) {
+			return {
+				errors: [
+					{
+						message: 'Dogodila se greška u sustavu!',
+						detail: error.message,
+					},
+				],
+			};
+		}
+	}
+}
+
+export async function updateMessageDone(message: any) {
+	const schema = z.object({
+		id: z.string(),
+		done: z.boolean(),
+	});
+
+	let data;
+
+	try {
+		data = schema.parse(message);
+	} catch (error) {
+		if (error instanceof z.ZodError) {
+			return {
+				errors: error.errors,
+			};
+		}
+	}
+
+	try {
+		const data = schema.parse(message);
+
+		await sql`UPDATE messages SET done = ${data.done} WHERE id = ${data.id}`;
+
+		revalidatePath('/poruke');
+
+		return {
+			message: 'Poruka je uspješno ažurirana',
 		};
 	} catch (error) {
 		if (error instanceof Error) {
