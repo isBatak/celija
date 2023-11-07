@@ -62,6 +62,12 @@ const RootLayout = (props: PropsWithChildren) => {
 				<meta property="og:image:type" content="image/png" />
 				<meta property="og:image:width" content="1200" />
 				<meta property="og:image:height" content="630" />
+				<meta property="og:title" content="ćelija" />
+				<meta
+					property="og:description"
+					content="Svoj doprinos pronađi u Galeriji Matice hrvatske na otvorenju ĆELIJE 14.11. u 19h."
+				/>
+				<meta property="og:site_name" content="ćelija'" />
 			</head>
 			<body className={cx(body.className, code.variable)}>{children}</body>
 		</html>
