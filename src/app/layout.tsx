@@ -67,7 +67,7 @@ const RootLayout = (props: PropsWithChildren) => {
 					property="og:description"
 					content="Svoj doprinos pronađi u Galeriji Matice hrvatske na otvorenju ĆELIJE 14.11. u 19h."
 				/>
-				<meta property="og:site_name" content="ćelija'" />
+				<meta property="og:site_name" content="ćelija" />
 			</head>
 			<body className={cx(body.className, code.variable)}>{children}</body>
 		</html>
