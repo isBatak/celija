@@ -5,7 +5,7 @@ import { sql } from '@vercel/postgres';
 import { z } from 'zod';
 import { importanceOptions } from './constants';
 
-const isSingleWord = (value: string) => /^[A-Za-z0-9]+$/.test(value);
+const isSingleWord = (value: string) => /^[\p{L}0-9]+$/u.test(value);
 
 const MyEnum = z.enum(importanceOptions);
 const MyCustomEnum = MyEnum.nullable().refine(

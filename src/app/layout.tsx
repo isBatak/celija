@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 		li "ĆELIJA" kritika administrativnih zavrzlama koje određuju sudbinu kulture ili
 		je oda otpornosti mladih umjetnika koji se usuđuju prkositi statusu quo? Umjetnost se ne
 		pridržava uvijek naših predrasuda. Ima moć šokiranja, često nas ostavi zbunjenima, a u nekim
-		slučajevima, propitujući sama svoju bit. "ĆELIJA" nas podsjećajuća da je umjetnost
+		slučajevima, propitujući sama svoju bit. "ĆELIJA" nas podsjeća da je umjetnost
 		ipak subjektivno područje, otvoreno za tumačenje svima. S tim na umu, umjetnicima uvijek
 		treba pomoć, a kulturu gradimo skupa.`,
 };
